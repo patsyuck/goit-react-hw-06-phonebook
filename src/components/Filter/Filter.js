@@ -1,11 +1,22 @@
 import './Filter.css';
 
-const Filter = ({ filter, onChange }) => {
+/*const Filter = ({ filter, onChange }) => {
   return (
     <div className="filter">
       <label>
         Find contacts by name
         <input value={filter} onChange={onChange('filter')} />
+      </label>
+    </div>
+  );
+};*/
+
+const Filter = ({ filter, onChange }) => {
+  return (
+    <div className="filter">
+      <label>
+        Find contacts by name
+        <input value={filter} onChange={onChange} />
       </label>
     </div>
   );

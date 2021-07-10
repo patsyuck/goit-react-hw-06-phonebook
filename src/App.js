@@ -1,11 +1,12 @@
 import React /*, { Component }*/ from 'react';
 import { connect } from 'react-redux';
+import { addContact, deleteContact, filterContacts } from './redux/actions';
 import './App.css';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import Filter from './components/Filter/Filter';
 import ContactList from './components/ContactList/ContactList';
 
-function App({ friends, filter }) {
+function App({ friends, filter, handleInput, handleSubmit, handleDelete }) {
   /*export class App extends Component {
   state = {
     contacts: [],
@@ -65,13 +66,13 @@ function App({ friends, filter }) {
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm handlerSubmit={this.handlerSubmit} />
+      <ContactForm handlerSubmit={contact => handleSubmit(contact)} />
       <h2>Contacts</h2>
-      <Filter filter={this.state.filter} onChange={this.handleChange} />
+      <Filter filter={filter} onChange={event => handleInput(event)} />
       <ContactList
         friends={friends}
         filter={filter}
-        onClick={this.handleDelete}
+        onClick={id => handleDelete(id)}
       />
     </div>
   );
@@ -84,6 +85,12 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {};
+const mapDispatchToProps = dispatch => {
+  return {
+    handleInput: event => dispatch(filterContacts(event)),
+    handleSubmit: contact => dispatch(addContact(contact)),
+    handleDelete: id => dispatch(deleteContact(id)),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

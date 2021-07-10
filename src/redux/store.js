@@ -29,7 +29,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case 'FILTER_CONTACTS':
       return {
         contacts: state.contacts,
-        filter: payload,
+        filter: payload.target.value,
       };
     default:
       return state;
