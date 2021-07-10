@@ -2,7 +2,7 @@ import './Filter.css';
 
 const Filter = ({ filter, onChange }) => {
   return (
-    <div class="filter">
+    <div className="filter">
       <label>
         Find contacts by name
         <input value={filter} onChange={onChange('filter')} />
