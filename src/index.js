@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import store from './redux/store';
-/*import { App } from './App';*/
-/*import connect(mapStateToProps, mapDispatchToProps)(App) from './App';*/
-/*import connect from './App';*/
 import App from './App';
 
 ReactDOM.render(
