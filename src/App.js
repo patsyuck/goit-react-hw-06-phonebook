@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React /*, { Component }*/ from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import { ContactForm } from './components/ContactForm/ContactForm';
 import Filter from './components/Filter/Filter';
 import ContactList from './components/ContactList/ContactList';
 
-export class App extends Component {
+function App({ friends, filter }) {
+  /*export class App extends Component {
   state = {
     contacts: [],
     filter: '',
@@ -58,5 +60,30 @@ export class App extends Component {
 
   componentDidUpdate() {
     localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-  }
+  }*/
+
+  return (
+    <div>
+      <h1>Phonebook</h1>
+      <ContactForm handlerSubmit={this.handlerSubmit} />
+      <h2>Contacts</h2>
+      <Filter filter={this.state.filter} onChange={this.handleChange} />
+      <ContactList
+        friends={friends}
+        filter={filter}
+        onClick={this.handleDelete}
+      />
+    </div>
+  );
 }
+
+const mapStateToProps = state => {
+  return {
+    friends: state.contacts,
+    filter: state.filter,
+  };
+};
+
+const mapDispatchToProps = dispatch => {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
