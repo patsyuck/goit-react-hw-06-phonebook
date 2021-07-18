@@ -1,14 +1,16 @@
+import types from './types';
+
 export const addContact = contact => ({
-  type: 'ADD_CONTACT',
+  type: types.ADD,
   payload: contact,
 });
 
 export const deleteContact = id => ({
-  type: 'DELETE_CONTACT',
+  type: types.DEL,
   payload: id,
 });
 
 export const filterContacts = event => ({
-  type: 'FILTER_CONTACTS',
+  type: types.FILTER,
   payload: event,
 });

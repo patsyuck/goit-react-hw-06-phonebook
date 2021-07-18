@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import types from './types';
 
 const initialState = {
   contacts: [],
@@ -8,7 +9,7 @@ const initialState = {
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case 'ADD_CONTACT':
+    case types.ADD:
       if (
         state.contacts.some(
           item => item.name.toLowerCase() === payload.name.toLowerCase(),
@@ -22,12 +23,12 @@ const reducer = (state = initialState, { type, payload }) => {
           filter: state.filter,
         };
       }
-    case 'DELETE_CONTACT':
+    case types.DEL:
       return {
         contacts: state.contacts.filter(item => item.id !== payload),
         filter: state.filter,
       };
-    case 'FILTER_CONTACTS':
+    case types.FILTER:
       return {
         contacts: state.contacts,
         filter: payload.target.value,
