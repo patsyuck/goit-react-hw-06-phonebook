@@ -24,8 +24,8 @@ function App({ friends, filter, handleInput, handleSubmit, handleDelete }) {
 
 const mapStateToProps = state => {
   return {
-    friends: state.contacts,
-    filter: state.filter,
+    friends: state.reducer.contacts,
+    filter: state.reducer.filter,
   };
 };
 

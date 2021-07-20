@@ -1,6 +1,6 @@
 /*import { createStore } from 'redux';
-import { combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';*/
+/*import { combineReducers } from 'redux';*/
 import { configureStore } from '@reduxjs/toolkit';
 import types from './types';
 
@@ -40,8 +40,8 @@ const reducer = (state = initialState, { type, payload }) => {
   }
 };
 
-/*const store = createStore(reducer, composeWithDevTools());
-const rootReducer = combineReducers({
+/*const store = createStore(reducer, composeWithDevTools());*/
+/*const rootReducer = combineReducers({
   reducer,
 })*/
 const store = configureStore({
