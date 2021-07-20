@@ -1,7 +1,7 @@
 /*import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';*/
 /*import { combineReducers } from 'redux';*/
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, createReducer } from '@reduxjs/toolkit';
 import types from './types';
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
   filter: '',
 };
 
-const reducer = (state = initialState, { type, payload }) => {
+/*const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case types.ADD:
       if (
@@ -38,7 +38,33 @@ const reducer = (state = initialState, { type, payload }) => {
     default:
       return state;
   }
-};
+};*/
+
+const reducer = createReducer(initialState, {
+  [types.ADD]: (state, { payload }) => {
+    if (
+      state.contacts.some(
+        item => item.name.toLowerCase() === payload.name.toLowerCase(),
+      )
+    ) {
+      alert(`${payload.name} is already in contacts!`);
+      return state;
+    } else {
+      return {
+        contacts: [...state.contacts, payload],
+        filter: state.filter,
+      };
+    }
+  },
+  [types.DEL]: (state, { payload }) => ({
+    contacts: state.contacts.filter(item => item.id !== payload),
+    filter: state.filter,
+  }),
+  [types.FILTER]: (state, { payload }) => ({
+    contacts: state.contacts,
+    filter: payload.target.value,
+  }),
+});
 
 /*const store = createStore(reducer, composeWithDevTools());*/
 /*const rootReducer = combineReducers({
