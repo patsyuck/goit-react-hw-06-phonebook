@@ -1,4 +1,4 @@
-import types from './types';
+/*import types from './types';*/
 import { createAction } from '@reduxjs/toolkit';
 
 /*export const addContact = contact => ({
@@ -16,8 +16,14 @@ export const filterContacts = event => ({
   payload: event,
 });*/
 
-export const addContact = createAction(types.ADD);
+/*export const addContact = createAction(types.ADD);
 
 export const deleteContact = createAction(types.DEL);
 
-export const filterContacts = createAction(types.FILTER);
+export const filterContacts = createAction(types.FILTER);*/
+
+export const addContact = createAction('ADD_CONTACT');
+
+export const deleteContact = createAction('DELETE_CONTACT');
+
+export const filterContacts = createAction('FILTER_CONTACTS');

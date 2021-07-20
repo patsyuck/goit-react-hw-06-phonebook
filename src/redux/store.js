@@ -2,7 +2,8 @@
 import { composeWithDevTools } from 'redux-devtools-extension';*/
 /*import { combineReducers } from 'redux';*/
 import { configureStore, createReducer } from '@reduxjs/toolkit';
-import types from './types';
+/*import types from './types';*/
+import { addContact, deleteContact, filterContacts } from './actions';
 
 const initialState = {
   contacts: [],
@@ -41,7 +42,7 @@ const initialState = {
 };*/
 
 const reducer = createReducer(initialState, {
-  [types.ADD]: (state, { payload }) => {
+  [addContact]: (state, { payload }) => {
     if (
       state.contacts.some(
         item => item.name.toLowerCase() === payload.name.toLowerCase(),
@@ -56,11 +57,11 @@ const reducer = createReducer(initialState, {
       };
     }
   },
-  [types.DEL]: (state, { payload }) => ({
+  [deleteContact]: (state, { payload }) => ({
     contacts: state.contacts.filter(item => item.id !== payload),
     filter: state.filter,
   }),
-  [types.FILTER]: (state, { payload }) => ({
+  [filterContacts]: (state, { payload }) => ({
     contacts: state.contacts,
     filter: payload.target.value,
   }),
